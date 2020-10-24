@@ -12,7 +12,7 @@ class RegisterController extends Controller
         $birthday =  $request->input('month');
         $validate = Validator::make($request->all(), [
             "email" => "unique:users,email",
-            "confirmpassword" => 'required|same:password',
+            "verifypassword" => 'required|same:password',
             "contact" => "required|min:11"
         ]);
         if($validate->fails()){
@@ -27,6 +27,9 @@ class RegisterController extends Controller
                       "contact" => $request->input('contact'),
                       "birthday" => $birthday,
                       ]);
-        echo "<h3>Registration Successful! click <a href='/login'>here</a> to login.<h3> ";
+                      echo "<script>
+                      alert('Account created.');
+                      window.location.href='/login';
+                      </script>";
     }
 }

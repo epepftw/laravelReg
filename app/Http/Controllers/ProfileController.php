@@ -30,9 +30,12 @@ class ProfileController extends Controller
         $user->contact = $request->input('contact');
         $user->address = $request->input('address');
         $user->save();
-        echo "Updated Successfully! <a href='/profile'>return to profile</a>";
+        echo "<script>
+                alert('Information Updated!');
+                window.location.href='/profile';
+                </script>";
     }
-    public function editpass($id){
+    public function changepass($id){
         $user = User::find($id);
         return view('ChangePassword')->with('user',$user);
     }
@@ -40,15 +43,22 @@ class ProfileController extends Controller
         $user = User::find($id);
 
         if(Hash::check($request->input('old'), $user->password)){
-            if($request->input('new') == $request->input('confirm')){
+            if($request->input('new') == $request->input('verify')){
                 $user->password = Hash::make($request->input('new'));
-                echo "Password Updated! <a href='/profile'>return</a>";
+                echo "<script>
+                alert('Your password has been updated.');
+                window.location.href='/profile';
+                </script>";
                 $user->save();
             }
             else    
-                echo "New and Confirm Password does not match!. Please try again. <a href='/profile/editpass/$id'>return</a>";
+                echo "Your password doesn't match!. Please try again. <a href='/profile/changepass/$id'>return</a>";
+                
         }
         else
-            echo " Password does not match!. Please try again. <a href='/profile/editpass/$id'>return</a>";
+            echo "<script>
+                      alert('Incorrect password! Try again.');
+                      window.location.href='/profile/changepass/$id';
+                      </script>";
     }
 }
