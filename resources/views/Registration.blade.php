@@ -35,7 +35,7 @@
 							<label for="lastname"><b>Last Name :</b></label>
 							<input class="form-control" type="text" value="{{old('lastname')}}" name="lastname" placeholder="Last Name" maxlength="30" autocomplete="off" required> 
 							<label for="date"><b>Birthday :</b></label>
-							<input class="form-control" type="date" name="month">
+							<input class="form-control" type="date" name="month" required>
 							<label for="email"><b>E-mail:</b></label>
 							<input class="form-control" type="email" name="email" value="{{old('email')}}" placeholder="ex. johnsmith@mail.com" autocomplete="off" required> 
 							<label for="contact"><b>Contact Number :</b></label>

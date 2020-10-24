@@ -8,7 +8,7 @@
 <br>
 <div class="container-fluid d-flex p-2 justify-content-center">
   <div class="card shadow p-3 w-25">
-  <h3 class="text-primary"><b>Sign up</b></h3><hr>
+  <h3 class="text-success"><b>Sign in</b></h3><hr>
   	@if($errorMsg != null)
 	<p id="error">{{$errorMsg}}</p>
 	@endif
